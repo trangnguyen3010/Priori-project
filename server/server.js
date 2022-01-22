@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
-app.get("/test", (req, res) => {
-    res.send("HELLO!");
+app.get("/api/test", (req, res) => {
+    res.json("testing stuff");
 });
 
 
