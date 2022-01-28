@@ -1,24 +1,42 @@
 import { useEffect, useState} from "react";
 
-function RegistrationForm({handleReg}){
+function RegistrationForm(){
 
 
     const [detail, setDetail] = useState({email: "", password: "", passwordConfirm: "",
                                           name: "", studentID: "", school: ""});
-    // const [err, setErr] = useState("");
-    
-    function handleSubmit(e){
-        e.preventDefault();
-        handleReg(detail);
+    const [err, setErr] = useState(null)
+
+    function sendRegisterData(obj){
+        fetch("/register", {
+          method: "POST",
+          headers:{
+            "Accept": "application/json",
+            "Content-Type": "application/json" 
+          },
+          body: JSON.stringify(obj)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setErr(data)
+        })
     }
 
-    useEffect(() => {
-        console.log("Rerendered Page");
-    }, [])
+
+    function handleSubmit(e){
+        e.preventDefault();
+        sendRegisterData(detail);
+
+    }
+
+
 
     return(
         <div className="container login">
             <h1>Register</h1>
+
+            {err && err.map(errMsg => <div key={errMsg.msg}>{errMsg.msg}</div>)} 
+            
             <form onSubmit={handleSubmit}>
                 <div className = "form-inner">
                     {/* Name */}

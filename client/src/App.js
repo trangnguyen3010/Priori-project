@@ -54,7 +54,7 @@ function App() {
 
 
         {/* <LoginForm></LoginForm> */}
-        <RegistrationForm handleReg={sendRegisterData}></RegistrationForm>
+        <RegistrationForm></RegistrationForm>
         
       </header>
     </div>

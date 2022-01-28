@@ -13,6 +13,8 @@ function LoginForm(){
         console.log("Rerendered Page");
     }, [])
 
+    
+
     return(
         <div className="container login">
             <h1>Login</h1>

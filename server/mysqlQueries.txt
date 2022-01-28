@@ -1,0 +1,9 @@
+db.query(`SELECT * FROM user WHERE email="..."`, (err, result) => {
+        if(err){
+            throw err
+        }
+        else{
+            console.log("pritning db")
+            console.log(result) // prints whole db
+        }
+    })
