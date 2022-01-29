@@ -8,6 +8,7 @@ function RegistrationForm(){
     const [err, setErr] = useState(null)
 
     function sendRegisterData(obj){
+        var status = 200;
         fetch("/register", {
           method: "POST",
           headers:{
@@ -16,10 +17,32 @@ function RegistrationForm(){
           },
           body: JSON.stringify(obj)
         })
-        .then((res) => res.json())
-        .then((data) => {
-            setErr(data)
+        // .then((res) => res.json())
+        // .then((data) => {
+        //     setErr(data)
+        // })
+        .then(res => {
+            if(res.status !== 200){
+                status = res.status;
+            }
+            console.log(res.status)
+            return res.json()
         })
+        .then((data) => {
+            if(status !== 200){
+                console.log("err occured");
+                setErr(data);
+            }
+            else{
+                // redirect to successful page
+                console.log("Account created!");
+            }
+        })
+        
+    }
+
+    function clearErr(){
+        setErr(null)
     }
 
 
@@ -77,6 +100,7 @@ function RegistrationForm(){
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
+                <button type="button" className="btn btn-danger" onClick={clearErr}>clearErrors</button>
             </form>
         </div>
 
