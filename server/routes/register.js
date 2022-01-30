@@ -16,8 +16,7 @@ router.post("/", (req, res) => {
             return;
         })
         .catch(reject => {
-            var errors = [reject]
-            res.status(422).json(errors);
+            res.status(422).json(reject);
             return;
         })
     })

@@ -49,7 +49,7 @@ function RegistrationForm(){
 
 
     return(
-        <div className="container login">
+        <div className="container register">
             <h1>Register</h1>
 
             {err && err.map(errMsg => <div key={errMsg.msg}>{errMsg.msg}</div>)} 
@@ -93,7 +93,7 @@ function RegistrationForm(){
                         onChange={(e) => setDetail({...detail, passwordConfirm: e.target.value})}></input>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary">Register</button>
                 <button type="button" className="btn btn-danger" onClick={clearErr}>clearErrors</button>
             </form>
         </div>

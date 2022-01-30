@@ -1,4 +1,5 @@
 const db = require("../controller/mysqldb");
+const bcrypt = require("bcrypt");
 
 async function userCheck(data){
     return new Promise((resolve, reject) => {
@@ -35,20 +36,39 @@ async function createUser(data){
 
     var curDate = new Date();
     const {email, password, passwordConfirm, name, studentID, school} = data;
+    var hashedPass;
+
     return new Promise((resolve, reject) => {
         let registeredDate = `${curDate.toLocaleDateString()} - ${curDate.toLocaleTimeString()}`;
-        let query = `INSERT INTO user (studentID, email, password, dateReg, school, name)
-                     VALUES ('${studentID}', '${email}', '${password}', '${registeredDate}', '${school}', '${name}')`;
+        
+        var error = []
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(password, salt, (err, hash) => {
+                if(err){
+                    error.push({msg: err});
+                    reject(error);
+                    return;
+                }
+                hashedPass = hash;
+                // console.log(hashedPass);
+                let query = `INSERT INTO user (studentID, email, password, dateReg, school, name)
+                VALUES ('${studentID}', '${email}', '${hashedPass}', '${registeredDate}', '${school}', '${name}')`;
 
-        db.query(query, (err, result) => {
-            if(err){
-                console.log(err.sqlMessage)
-                reject(err);
-                return;
-            }
-            resolve("Registration successful");
-            return;
+                db.query(query, (err, result) => {
+                    if(err){
+                        error.push({msg: err.sqlMessage})
+                        console.log(err.sqlMessage)
+                        reject(error);
+                        return;
+                    }
+                    resolve("Registration successful");
+                    return;
+                })
+            })
         })
+        
+
+        
 
 
 
