@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+input[type=text], input[type=password] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+
+.signup_button{
+  background-color: #6aaa04;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+}
+
+.login_button {
+  background-color: #6aaa04;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 5%;
+  
+  margin-bottom: 50;
+}
+
+.login_line{
+  width: 400px;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  position: absolute;
+  margin-bottom: -330;
+}
+
+.signup_line{
+  width: 400px;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  position: absolute;
+  margin-bottom: -330;
+}
+
+button:hover {
+  opacity: 0.8;
+}

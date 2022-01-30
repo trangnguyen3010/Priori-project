@@ -25,10 +25,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>Open browser console and click the button below. Console should print "testing stuff" on click</p>
-        <button onClick={testFn}>Test button</button>
-
+        <button className="App-button" onClick={testFn} >Test button</button>
         <button onClick={sendData}>Click to send data to back end</button>
+
       </header>
+
     </div>
   );
 }
