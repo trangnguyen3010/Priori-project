@@ -8,7 +8,7 @@ function RegistrationForm(){
     const [err, setErr] = useState(null)
 
     function sendRegisterData(obj){
-        var status = 200;
+        var status;
         fetch("/register", {
           method: "POST",
           headers:{
@@ -22,10 +22,7 @@ function RegistrationForm(){
         //     setErr(data)
         // })
         .then(res => {
-            if(res.status !== 200){
-                status = res.status;
-            }
-            console.log(res.status)
+            status = res.status;
             return res.json()
         })
         .then((data) => {
