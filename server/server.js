@@ -78,6 +78,7 @@ app.post("/register", (req, res) => {
         createUser(req.body)
         .then(resolve => {
             res.status(200).json(resolve);
+            // res.redirect("/")
             return;
         })
         .catch(reject => {

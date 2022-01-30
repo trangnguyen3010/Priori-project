@@ -17,10 +17,6 @@ function RegistrationForm(){
           },
           body: JSON.stringify(obj)
         })
-        // .then((res) => res.json())
-        // .then((data) => {
-        //     setErr(data)
-        // })
         .then(res => {
             status = res.status;
             return res.json()
@@ -33,6 +29,7 @@ function RegistrationForm(){
             else{
                 // redirect to successful page
                 console.log("Account created!");
+                window.location.replace("/")
             }
         })
         
