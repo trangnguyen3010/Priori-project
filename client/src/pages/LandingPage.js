@@ -1,12 +1,14 @@
-import Navbar from './components/Navbar';
-import Home from './components/LandingPage/Home';
-import About from './components/LandingPage/About';
-import OurTeam from './components/LandingPage/OurTeam';
-import Contact from './components/LandingPage/Contact';
+import Navbar from '../components/Navbar';
+import Home from '../components/LandingPage/Home';
+import About from '../components/LandingPage/About';
+import OurTeam from '../components/LandingPage/OurTeam';
+import Contact from '../components/LandingPage/Contact';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Create from './components/LandingPage/Create';
+import Create from '../components/LandingPage/Create';
+import NotFound from './NotFound';
 
-function App() {
+
+function LandingPage() {
   return (
     <Router>
       <div className="App">
@@ -25,8 +27,11 @@ function App() {
             <Route exact path="/contact">
               <Contact />
             </Route>
-            <Route path="/create">
+            <Route exact path="/create">
               <Create />
+            </Route>
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
         </div>
@@ -35,4 +40,4 @@ function App() {
   );
 }
 
-export default App;
+export default LandingPage;

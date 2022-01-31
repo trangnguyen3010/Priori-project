@@ -1,38 +1,34 @@
-import Navbar from './Navbar';
-import Home from './Components/LandingPage/Home';
-import About from './Components/LandingPage/About';
-import OurTeam from './Components/LandingPage/OurTeam';
-import Contact from './Components/LandingPage/Contact';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Create from './Components/LandingPage/Create';
+import ReactLoader from './components/Loader';
+import * as ROUTES from './constants/routes';
+//import UserContext from './context/user';
+// import useAuthListener from './hooks/use-auth-listener';
 
-function App() {
+const Login = lazy(() => import('./pages/Login'));
+const SignUp = lazy(() => import('./pages/Signup'));
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+// const Dashboard = lazy(() => import('./pages/dashboard'));
+// const Profile = lazy(() => import('./pages/profile'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+export default function App() {
+  // const { user } = useAuthListener();
+
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <div className="content">
+      <Router>
+        <Suspense fallback={<ReactLoader />}>
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/ourteam">
-              <OurTeam />
-            </Route>
-            <Route exact path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
+          <Route exact path={ROUTES.LANDINGPAGE} component={LandingPage} />
+            <Route exact path={ROUTES.LOGIN} component={Login} />
+            <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
+            {/* <Route path={ROUTES.PROFILE} component={Profile} />
+            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
+              <Dashboard />
+            </ProtectedRoute> */}
+            <Route component={NotFound}/>
           </Switch>
-        </div>
-      </div>
-    </Router>
+        </Suspense>
+      </Router>
   );
 }
-
-export default App;

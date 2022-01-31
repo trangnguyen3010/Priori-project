@@ -12,7 +12,6 @@ const OurTeam = () => {
     { name: 'Trang Nguyen', photo: 'logo192.png', id: 5 }
   ];
 
-
   return (
     <div className="class">
       <div className='main'>

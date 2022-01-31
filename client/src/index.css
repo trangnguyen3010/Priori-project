@@ -52,7 +52,13 @@
   margin-bottom: 8px;
 }
 
+.buttons form,
+.buttons form div {
+    display: inline;
+}
 .buttons button{
+  display: inline;
+  vertical-align: middle;
 margin-top: 10px;
 padding: 10px;
 color: white;
@@ -61,6 +67,24 @@ margin-right: 15px;
 background-color: #f1356d;
 border-radius: 8px;
 border:white;
+  cursor: pointer;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.buttons button:hover,
+.buttons button:focus {
+  background-color: #F082AC;
 }
 
 /* blog previews / list */
