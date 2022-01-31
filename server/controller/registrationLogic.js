@@ -1,6 +1,7 @@
 const db = require("../controller/mysqldb");
 const bcrypt = require("bcrypt");
 
+
 async function userCheck(data){
     return new Promise((resolve, reject) => {
         const {email, password, passwordConfirm, name, studentID, school} = data;
@@ -50,7 +51,6 @@ async function createUser(data){
                     return;
                 }
                 hashedPass = hash;
-                // console.log(hashedPass);
                 let query = `INSERT INTO user (studentID, email, password, dateReg, school, name)
                 VALUES ('${studentID}', '${email}', '${hashedPass}', '${registeredDate}', '${school}', '${name}')`;
 
