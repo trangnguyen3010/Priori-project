@@ -29,6 +29,26 @@
   color: #f1356d;
 }
 
+.header{
+  font-size: 60px;
+  font-weight: bolder;
+}
+.pink{
+  color: #f1356d;
+}
+.header black{
+  color: black;
+}
+
+.directing{
+  margin-top: 7px;
+}
+.underline_bold{
+  text-decoration: underline;
+  text-decoration-color: #f1356d;
+  color: #f1356d;
+}
+
 .tailspin{
   position: absolute;
   top: 50%;
@@ -43,7 +63,7 @@
   top: 50%;
   transform: translateY(70%);
   width: 100%;
-  border: 5px solid #FFFF00;
+  /* border: 5px solid #FFFF00; */
   justify-content: center;
   align-items: center;
   text-align:center;
@@ -70,6 +90,7 @@ button{
   display: inline;
   vertical-align: middle;
 margin-top: 10px;
+margin-bottom: 10px;
 padding: 10px;
 color: white;
 font-size: 16px;
@@ -114,11 +135,11 @@ button:focus {
 
 .main{
   width: 100%;
-  margin-top: 35px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 5px solid #FFFF00;
+  /* border: 5px solid #FFFF00; */
 }
 
 .profile-card{
@@ -131,7 +152,7 @@ button:focus {
   border-radius: 70%;
   /* box-shadow: 0 0 22px #f1356d; */
   transition: .6s;
-  margin: 0 25px;
+  margin: 0 40px;
 }
 .profile-card:hover{
   border-radius: 10px;
@@ -164,22 +185,11 @@ button:focus {
 .caption h3{
   color: white;
   font-size: 21px;
-  font-family: sans-serif;
 }
 .caption p{
   font-size: 15px;
   color: white;
-  font-family: sans-serif;
   margin: 2px 0 9px 0;
-}
-.caption .social-links a{
-  color: #333;
-  margin-right: 15px;
-  font-size: 21px;
-  transition: .6s;
-}
-.social-links a:hover{
-  color: #0c52a1;
 }
 
 .img img{

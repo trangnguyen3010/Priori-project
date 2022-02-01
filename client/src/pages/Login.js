@@ -1,7 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
 
@@ -10,14 +8,14 @@ function Login() {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-          //// post /auth from the server
-          history.push(ROUTES.DASHBOARD);
+            //// post /auth from the server
+            history.push(ROUTES.DASHBOARD);
         } catch (error) {
-          setEmailAddress('');
-          setPassword('');
-          setError(error.message);
+            setEmailAddress('');
+            setPassword('');
+            setError(error.message);
         }
-      };
+    };
 
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
@@ -25,16 +23,18 @@ function Login() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'Login - Instagram';
+        document.title = 'Login - Priori';
     }, []);
     return (
         <div className="App">
             <div className="App-header">
-                <h1>Login</h1>
+                <h1 className="header pink">Priori</h1>
+                <br />
+                <br />
                 {error && <p className="red">{error}</p>}
                 <form onSubmit={handleLogin} method="POST">
                     <label><b>Email</b></label>
-                    <input 
+                    <input
                         type="text"
                         placeholder="Enter Email"
                         value={emailAddress}
@@ -48,25 +48,18 @@ function Login() {
                         value={password}
                         onChange={({ target }) => setPassword(target.value)}
                         required />
-
-                    {/* <label>
-                        <input
-                        type="checkbox"
-                        checked="checked"
-                        id = "box"
-                        name="remember"
-                        value={remember}
-                        onChange={({ target }) => setRemember(target.value)}
-                        >Remember me</input>
-                    </label> */}
-
-                    <div className="login_line"></div>
                     <button className="button" type="submit">Login</button>
+                    <div className="login_line" />
                 </form>
-                <form action ={ROUTES.SIGN_UP}>
-                <button className="button" type="submit">Sign Up</button>
+                <form className="directing">
+                    <p type="submit">
+                        <span>
+                            Don't have an account? 
+                            <a className="underline_bold" href={ROUTES.SIGN_UP}> Sign up</a>
+                            .
+                        </span>
+                    </p>
                 </form>
-
             </div>
         </div>
     );
