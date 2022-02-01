@@ -37,6 +37,7 @@ function LoginForm({auth}){
                 })
                 .then(response => response.json())
                 // .then(data => console.log("Test message", data));
+                localStorage.setItem("token", data); // STORAGE HAS BEEN SET, NEED TO RETRIEVE UPON LOAD
                 auth(data);
 
                 /////// TEST TOKEN ////////////

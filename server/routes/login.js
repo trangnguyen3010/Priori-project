@@ -25,6 +25,7 @@ router.post("/", (req, res) => {
             email: resolve.email
         }
         jwt.sign({user}, "superSecretKey", (err, token) => {
+
             res.status(200).json(token);
             return;
         })

@@ -14,12 +14,17 @@ function App() {
   function loginToken(tok){
     console.log("Accessing loginToken func")
     setToken(tok);
+    
   }
+
+  
 
   useEffect(() => {
     console.log("Main app token: ");
-    console.log(token);
+    console.log(localStorage.getItem("token"));
+    // console.log(token);
   })
+
 
   return (
     <div className="App">
