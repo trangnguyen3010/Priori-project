@@ -1,5 +1,3 @@
-import React from 'react';
-import { ReactComponent as Logo } from './Profiles/logo192.png';
 import logo from './Profiles/logo.jpeg'; // Tell webpack this JS file uses this image
 
 
@@ -23,11 +21,6 @@ const OurTeam = () => {
             <div className="caption">
               <h3>{staff.name}</h3>
               <p>Full Stack Developer</p>
-              {/* <div class="social-links">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div> */}
             </div>
           </div>
         ))
@@ -43,11 +36,6 @@ const OurTeam = () => {
             <div className="caption">
               <h3>{staff.name}</h3>
               <p>Full Stack Developer</p>
-              {/* <div class="social-links">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div> */}
             </div>
           </div>
         ))
@@ -57,4 +45,4 @@ const OurTeam = () => {
   );
       }
 
-      export default OurTeam;
+export default OurTeam;

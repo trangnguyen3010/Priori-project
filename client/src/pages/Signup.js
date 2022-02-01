@@ -1,44 +1,46 @@
-import React from "react";
 import {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
 function Signup() {
-    const history = useHistory();
-    const handleSignup = async (event) => {
-        event.preventDefault();
-        try {
-          //// post /auth from the server
-          history.push(ROUTES.DASHBOARD);
-        } catch (error) {
-            setName('');
-            setUni('');
-            setMajor('');
-            setStudentnumber('');
-            setEmailAddress('');
-            setPassword('');
-            setError(error.message);
-        }
-      };
       const [emailAddress, setEmailAddress] = useState('');
       const [password, setPassword] = useState('');
       const [name, setName] = useState('');
       const [uni, setUni] = useState('');
       const [major, setMajor] = useState('');
       const [studentnumber, setStudentnumber] = useState('');
-      const [remember, setRemember] = useState(false);
-      const [error, setError] = useState('');
+      const [signUpError, setError] = useState('');
+
+          const history = useHistory();
+          const handleSignup = async (event) => {
+              event.preventDefault();
+              try {
+                //// post /auth from the server
+                history.push(ROUTES.DASHBOARD);
+              } catch (error) {
+                  setName('');
+                  setUni('');
+                  setMajor('');
+                  setStudentnumber('');
+                  setEmailAddress('');
+                  setPassword('');
+                  setError(error.message);
+              }
+            };
 
       useEffect(() => {
-        document.title = 'Login - Instagram';
+        document.title = 'Signup - Priori';
     }, []);
      return (
     <div class="App">
         <div class="App-header">
-            <h1>Sign up</h1>
-            {error && <p className="red">{error}</p>}
+            <h1 className="header pink">Priori</h1>
+            <h1>Start making you a priority</h1>
+            <br/>
+            <br/>
+            {signUpError && <p className="red">{signUpError}</p>}
             <form onSubmit={handleSignup} method="POST"> 
-                <label for="student_name"><b>What's your name?</b></label>
+                <b>Your name?</b>
                     <input 
                         type="text" 
                         placeholder="Enter name" 
@@ -46,7 +48,7 @@ function Signup() {
                         onChange = {({target}) => setName(target.value)}
                         required/>
             
-                <label for="studnet_university"><b>Where do you go for university?</b></label>
+                <b>Your university?</b>
                     <input 
                         type="text" 
                         placeholder="Enter university name" 
@@ -54,7 +56,7 @@ function Signup() {
                         onChange = {({target}) => setUni(target.value)} 
                         required/>
                 
-                <label for="studnet_major"><b>What's your major?</b></label>
+                <b>Your major?</b>
                     <input 
                         type="text" 
                         placeholder="Enter your major"  
@@ -62,7 +64,7 @@ function Signup() {
                         onChange = {({target}) => setMajor(target.value)}
                         required/>
                 
-                <label for="student_number"><b>What's your student number?</b></label>
+                <b>Your student number?</b>
                     <input 
                         type="text" 
                         placeholder="Enter your student number" 
@@ -70,7 +72,7 @@ function Signup() {
                         onChange = {({target}) => setStudentnumber(target.value)}
                         required/>
 
-                <label for="student_username"><b>What's your email?</b></label>
+                <b>Your email?</b>
                     <input 
                         type="text" 
                         placeholder="Enter Email"  
@@ -78,7 +80,7 @@ function Signup() {
                         onChange = {({target}) => setEmailAddress(target.value)}
                         required/>
 
-                <label for="student_password"><b>Enter a password</b></label>
+                <b>Enter a password</b>
                     <input 
                         type="password" 
                         placeholder="Enter Password"  
@@ -86,16 +88,25 @@ function Signup() {
                         onChange = {({target}) => setPassword(target.value)}
                         required/>
 
-                <button class="signup_button" type="submit">Sign Up</button>
-                
+                <button class="button" type="submit">Sign Up</button>
+                <div className="login_line"/>
             </form>
             <label for="question"><b>Already have an account?</b></label>
             <form action ={ROUTES.LOGIN}>
             <button className="login_button" type="submit">Login</button>
+            
+            <form className="directing">
+            <p type="submit">
+                <span>
+                    Have an account? 
+                    <a className="underline_bold" href={ROUTES.LOGIN}> Log in</a>
+                    .
+                </span>
+            </p>
             </form>
         </div>
     </div>
-     );
+    );
  }
 
  export default Signup;
