@@ -89,8 +89,9 @@ function Signup() {
                 <button class="signup_button" type="submit">Sign Up</button>
                 
             </form>
+            <label for="question"><b>Already have an account?</b></label>
             <form action ={ROUTES.LOGIN}>
-            <button className="login_button" type="submit">LOGIN</button>
+            <button className="login_button" type="submit">Login</button>
             </form>
         </div>
     </div>
