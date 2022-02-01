@@ -9,10 +9,10 @@ const Home = () => {
       <h5>Stephen R.Covey</h5>
       <div className="buttons">
         <form action={ROUTES.SIGN_UP}>
-          <button type="submit" value="Signup">Signup</button>
+          <button className="button" type="submit" value="Signup">Signup</button>
         </form>
         <form method="get" action={ROUTES.LOGIN}>
-          <button type="submit" value="Login">Login</button>
+          <button className="button" type="submit" value="Login">Login</button>
         </form>
       </div>
     </div>

@@ -2,11 +2,12 @@ import {TailSpin} from 'react-loader-spinner';
 
 export default function ReactLoader() {
   return (
+      <div className='tailspin'>
     <TailSpin
-      color="#00000059"
-      height={70}
-      width={70}
-      className="flex justify-center mt-12"
+      color="#f1356d"
+      height={100}
+      width={100}
     />
+    </div>
   );
 }

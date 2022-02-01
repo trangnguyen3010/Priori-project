@@ -29,6 +29,15 @@
   color: #f1356d;
 }
 
+.tailspin{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
 .frontpage {
   margin: 0px;
   top: 50%;
@@ -56,7 +65,8 @@
 .buttons form div {
     display: inline;
 }
-.buttons button{
+
+button{
   display: inline;
   vertical-align: middle;
 margin-top: 10px;
@@ -82,8 +92,8 @@ border:white;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-.buttons button:hover,
-.buttons button:focus {
+button:hover,
+button:focus {
   background-color: #F082AC;
 }
 

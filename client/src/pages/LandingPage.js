@@ -1,12 +1,14 @@
-import Navbar from '../components/Navbar';
-import Home from '../components/LandingPage/Home';
-import About from '../components/LandingPage/About';
-import OurTeam from '../components/LandingPage/OurTeam';
-import Contact from '../components/LandingPage/Contact';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Create from '../components/LandingPage/Create';
-import NotFound from './NotFound';
+import {lazy, Suspense} from 'react';
+import ReactLoader from '../components/Loader';
 
+const Navbar = lazy(() => import('../components/Navbar'));
+const Home = lazy(() => import('../components/LandingPage/Home'));
+const About = lazy(() => import('../components/LandingPage/About'));
+const OurTeam = lazy(() => import('../components/LandingPage/OurTeam'));
+const Contact = lazy(() => import('../components/LandingPage/Contact'));
+const Create = lazy(() => import('../components/LandingPage/Create'));
+const NotFound = lazy(() => import('./NotFound'));
 
 function LandingPage() {
   return (
@@ -14,6 +16,7 @@ function LandingPage() {
       <div className="App">
         <Navbar />
         <div className="content">
+        <Suspense fallback={<ReactLoader />}>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -34,6 +37,7 @@ function LandingPage() {
               <NotFound />
             </Route>
           </Switch>
+          </Suspense>
         </div>
       </div>
     </Router>

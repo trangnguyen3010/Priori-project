@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Navbar from '../components/Navbar';
 
 export default function NotFound() {
   useEffect(() => {
@@ -7,8 +8,9 @@ export default function NotFound() {
 
   return (
     <div className="bg-gray-background">
+      <Navbar/>
       <div className="frontpage">
-        <h1 className="text-center text-2xl">Not Found!</h1>
+        <h1>Not Found!</h1>
       </div>
     </div>
   );
