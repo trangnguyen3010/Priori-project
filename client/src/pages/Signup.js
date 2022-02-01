@@ -94,7 +94,7 @@ function Signup() {
             <label for="question"><b>Already have an account?</b></label>
             <form action ={ROUTES.LOGIN}>
             <button className="login_button" type="submit">Login</button>
-            
+            </form>
             <form className="directing">
             <p type="submit">
                 <span>
