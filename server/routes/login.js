@@ -1,54 +1,41 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
+
+const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 const db = require("../controller/mysqldb");
 
+const loginLogic = require("../controller/loginLogic");
+
+
+
+router.get("/test", loginLogic.verifyToken, (req, res) => {
+    // console.log("Hi, you're in");
+    res.json("Hi you're in test route of login rn");
+})
+
 router.post("/", (req, res) => {
-    console.log
-    var email = req.body.email;
-    var password = req.body.password;
-    var errors = [];
-    query = `SELECT * FROM user WHERE email='${email}'`;
-    if(password.length == 0){
-        errors.push({msg: "Please enter a password"});
-    }
-    if(email.length == 0){
-        errors.push({msg: "Please enter an email"});
-    }
-    if(errors.length > 0){
-        res.json(errors);
-        return;
-    }
-    db.query(query, (err, result) => {
-        if(err){
-            errors.push({msg: err})
-            console.log(err)
-            res.json(errors); // reject
-            return;
+    loginLogic.userCheck(req.body)
+    .then(resolve => {
+
+        const user = {
+            name: resolve.name,
+            studentID: resolve.studentID,
+            school: resolve.school,
+            email: resolve.email
         }
-        if(result.length == 0){
-            errors.push({msg: "Email/password is incorrect or email doesn't exist!"});
-            res.json(errors)
-            return;
-        }
-        bcrypt.compare(password, result[0].password, (err, isMatch) => {
-            if(err){
-                errors.push({msg: err});
-                console.log(err);
-                res.json(errors);
-                return;
-            }
-            if(isMatch){
-                console.log("Successful login")
-                res.json(errors);
-                return;
-            }
-            res.json({msg: "Email/password is incorrect or email doesn't exist!"});
+        jwt.sign({user}, "superSecretKey", (err, token) => {
+            res.status(200).json(token);
             return;
         })
 
+
     })
+    .catch(reject => {
+        res.status(422).json(reject);
+    })
+
+
 })
 
 module.exports = router;

@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 
 
-function Navbar(){
+function Navbar({auth}){
     return(
         <nav className="navbar">
             <div className="links">
@@ -16,7 +16,7 @@ function Navbar(){
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/register" element={<RegistrationForm/>}/>
-                    <Route path="/login" element={<LoginForm/>}/>
+                    <Route path="/login" element={<LoginForm auth={auth}/>}/>
                 </Routes>
             </div>
         </nav>

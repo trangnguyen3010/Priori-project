@@ -19,7 +19,7 @@ function RegistrationForm(){
         })
         .then(res => {
             status = res.status;
-            return res.json()
+            return res.json();
         })
         .then((data) => {
             if(status !== 200){

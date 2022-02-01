@@ -1,16 +1,54 @@
 import { useEffect, useState} from "react";
 
-function LoginForm(){
+function LoginForm({auth}){
 
     const [detail, setDetail] = useState({email: "", password: ""});
-    // const [err, setErr] = useState("");
+    const [err, setErr] = useState(null);
     
     function handleSubmit(e){
         e.preventDefault();
-        console.log(detail)
+        var status;
+
+        fetch("/login", {
+          method: "POST",
+          headers:{
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({email: detail.email, password: detail.password})
+        })
+        .then(res => {
+            // console.log(res)
+            status = res.status;
+            return res.json();
+        })
+        .then(data =>{
+            if(status !== 200){
+                console.log("err occured");
+                console.log(data);
+                setErr(data);
+            }
+            else{
+                /////// TEST TOKEN //////////
+                fetch("/login/test", {
+                    headers: {
+                        "authorization": `Bearer ${data}`
+                    }
+                })
+                .then(response => response.json())
+                // .then(data => console.log("Test message", data));
+                auth(data);
+
+                /////// TEST TOKEN ////////////
+
+            }
+        })
     }
+
+
     useEffect(() => {
         console.log("Rerendered Page");
+        
     }, [])
 
     
