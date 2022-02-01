@@ -87,6 +87,10 @@ function Signup() {
                         required/>
 
                 <button class="signup_button" type="submit">Sign Up</button>
+                
+            </form>
+            <form action ={ROUTES.LOGIN}>
+            <button className="login_button" type="submit">LOGIN</button>
             </form>
         </div>
     </div>
