@@ -6,6 +6,7 @@ const Navbar = () => {
       <h1>Priori</h1>
       <div className="links">
         <Link to="/">Home</Link>
+        <Link to="/dashboard">Dashboard</Link>
         <Link to="/about">About</Link>
         <Link to="/ourteam">Our Team</Link>
         <Link to="/contact">Contact</Link>
