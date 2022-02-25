@@ -3,13 +3,41 @@ import { useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
 
+
 function Login() {
+    const [emailAddress, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false);
+    const [error, setError] = useState('');
+
     const history = useHistory();
     const handleLogin = async (event) => {
         event.preventDefault();
+        var status;
         try {
-            //// post /auth from the server
             history.push(ROUTES.DASHBOARD);
+            fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({email: emailAddress, password: password})
+            })
+            .then(res => {
+                status = res.status
+                return res.json();
+            })
+            .then(data => {
+                if(status !== 200){
+                    console.log("error occured!");
+                    setError(data);
+                }
+                else{
+                    // data will be the token upon success
+                    console.log(data)
+                }
+            })
         } catch (error) {
             setEmailAddress('');
             setPassword('');
@@ -17,10 +45,7 @@ function Login() {
         }
     };
 
-    const [emailAddress, setEmailAddress] = useState('');
-    const [password, setPassword] = useState('');
-    const [remember, setRemember] = useState(false);
-    const [error, setError] = useState('');
+
 
     useEffect(() => {
         document.title = 'Login - Priori';
