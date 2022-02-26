@@ -44,8 +44,9 @@ async function userCheck(data){
                     resolve(result[0]);
                     return;
                 }
-                reject({msg: "Email/password is incorrect or email doesn't exist!"});
+                reject([{msg: "Email/password is incorrect or email doesn't exist!"}]);
                 return;
+                
             })
         })
 

@@ -29,7 +29,7 @@ function Login() {
             })
             .then(data => {
                 if(status !== 200){
-                    console.log("error occured!");
+                    console.log(data[0].msg);
                     setEmailAddress('');
                     setPassword('');
                     setError(data[0].msg);
