@@ -46,7 +46,6 @@ async function userCheck(data){
                 }
                 reject([{msg: "Email/password is incorrect or email doesn't exist!"}]);
                 return;
-                
             })
         })
 
@@ -62,7 +61,7 @@ function verifyToken(req, res, next){
         // console.log("token", token);
         jwt.verify(token, "superSecretKey", (err, user) => {
             if(err){
-                res.status(403).json({msg: "Token not valid!"});
+                res.status(403).json([{msg: "Token not valid!"}]);
                 return;
             }
 
@@ -73,7 +72,7 @@ function verifyToken(req, res, next){
     }
     else{
         // console.log("Not authenticated");
-        res.status(401).json({msg: "You are not authenticated!"});
+        res.status(401).json([{msg: "You are not authenticated!"}]);
     }
 }
 
