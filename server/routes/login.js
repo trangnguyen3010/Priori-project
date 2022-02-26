@@ -15,7 +15,6 @@ router.get("/test", loginLogic.verifyToken, (req, res) => {
 })
 
 router.post("/", (req, res) => {
-    // console.log(req.body);
     loginLogic.userCheck(req.body)
     .then(resolve => {
 

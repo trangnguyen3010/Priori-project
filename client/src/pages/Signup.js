@@ -32,8 +32,8 @@ function Signup() {
         document.title = 'Signup - Priori';
     }, []);
      return (
-    <div class="App">
-        <div class="App-header">
+    <div className="App">
+        <div className="App-header">
             <h1 className="header pink">Priori</h1>
             <h1>Start making you a priority</h1>
             <br/>

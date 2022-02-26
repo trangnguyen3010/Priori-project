@@ -15,7 +15,6 @@ function Login() {
         event.preventDefault();
         var status;
         try {
-            history.push(ROUTES.DASHBOARD);
             fetch("/login", {
                 method: "POST",
                 headers: {
@@ -31,16 +30,17 @@ function Login() {
             .then(data => {
                 if(status !== 200){
                     console.log("error occured!");
-                    setError(data);
+                    setEmailAddress('');
+                    setPassword('');
+                    setError(data[0].msg);
                 }
                 else{
                     // data will be the token upon success
-                    console.log(data)
+                    console.log(data);
+                    history.push(ROUTES.DASHBOARD);
                 }
             })
         } catch (error) {
-            setEmailAddress('');
-            setPassword('');
             setError(error.message);
         }
     };
@@ -55,8 +55,8 @@ function Login() {
             <div className="App-header">
                 <h1 className="header pink">Priori</h1>
                 <br />
-                <br />
                 {error && <p className="red">{error}</p>}
+                <br />
                 <form onSubmit={handleLogin} method="POST">
                     <label><b>Email</b></label>
                     <input
