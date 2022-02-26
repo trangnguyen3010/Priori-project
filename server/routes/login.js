@@ -15,6 +15,7 @@ router.get("/test", loginLogic.verifyToken, (req, res) => {
 })
 
 router.post("/", (req, res) => {
+    // console.log(req.body);
     loginLogic.userCheck(req.body)
     .then(resolve => {
 
@@ -24,15 +25,15 @@ router.post("/", (req, res) => {
             school: resolve.school,
             email: resolve.email
         }
-        jwt.sign({user}, "superSecretKey", (err, token) => {
-
-            res.status(200).json(token);
-            return;
+        jwt.sign({user}, "superSecretKey",{ expiresIn: "1d" } ,(err, token) => {
+                res.status(200).json(token);
+                return;
         })
 
 
     })
     .catch(reject => {
+        // console.log(reject)
         res.status(422).json(reject);
     })
 

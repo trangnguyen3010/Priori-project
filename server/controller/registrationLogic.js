@@ -36,7 +36,7 @@ async function userCheck(data){
 async function createUser(data){
 
     var curDate = new Date();
-    const {email, password, passwordConfirm, name, studentID, school} = data;
+    const {email, password, passwordConfirm, name, studentID, school, major} = data;
     var hashedPass;
 
     return new Promise((resolve, reject) => {
@@ -51,8 +51,8 @@ async function createUser(data){
                     return;
                 }
                 hashedPass = hash;
-                let query = `INSERT INTO user (studentID, email, password, dateReg, school, name)
-                VALUES ('${studentID}', '${email}', '${hashedPass}', '${registeredDate}', '${school}', '${name}')`;
+                let query = `INSERT INTO user (studentID, email, password, dateReg, school, name, major)
+                VALUES ('${studentID}', '${email}', '${hashedPass}', '${registeredDate}', '${school}', '${name}', '${major}')`;
 
                 db.query(query, (err, result) => {
                     if(err){

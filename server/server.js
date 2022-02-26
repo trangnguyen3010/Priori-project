@@ -26,7 +26,9 @@ app.use(session({
     }
 }))
 
-
+app.get("/test", (req, res) => {
+    res.send("HI THERE");
+})
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 

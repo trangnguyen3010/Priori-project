@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 async function userCheck(data){
 
     return new Promise((resolve, reject) => {
-        console.log
+        // console.log(data)
         var email = data.email;
         var password = data.password;
         var errors = [];
@@ -55,12 +55,12 @@ async function userCheck(data){
 function verifyToken(req, res, next){
     // console.log("Verifying token");
     const authHeader = req.headers.authorization;
+    console.log(authHeader);
     if(authHeader){
         const token = authHeader.split(" ")[1];
         // console.log("token", token);
         jwt.verify(token, "superSecretKey", (err, user) => {
             if(err){
-                // console.log("Token not valid");
                 res.status(403).json({msg: "Token not valid!"});
                 return;
             }
