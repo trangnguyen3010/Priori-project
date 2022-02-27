@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import { testToken } from '../service/tokenService';
 import * as ROUTES from '../constants/routes';
 
-function Signup() {
+function Signup({token, setToken}) {
     const [detail, setDetail] = useState({email: "", password: "", passwordConfirm: "",
                                           name: "", studentID: "", school: ""});
     const [err, setErr] = useState(null);
@@ -15,6 +16,14 @@ function Signup() {
 
     useEffect(() => {
         document.title = 'Signup - Priori';
+        if (token){
+            testToken(token.token_string)
+            .then(data =>{
+                if (data){
+                    history.push(ROUTES.DASHBOARD);
+                }
+            });
+        }
     }, []);
 
     function sendRegisterData(obj){

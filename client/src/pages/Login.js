@@ -1,27 +1,29 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import useToken from '../hooks/useToken';
-import {testToken} from '../service/tokenService';
+import { testToken } from '../service/tokenService';
 
 
-function Login({token, setToken}) {
+export default function Login({token, setToken}) {
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
-    const [remember, setRemember] = useState(false);
+    // const [remember, setRemember] = useState(false);
     const [error, setError] = useState('');
     const history = useHistory();
 
     useEffect(() =>{
-        if (testToken(token)){
-            console.log("jsndv");
-            localStorage.setItem("token", token);
-            setToken(token);
-            history.push(ROUTES.DASHBOARD);
-        };
+        document.title = 'Login - Priori';
+        if (token){
+            testToken(token.token_string)
+            .then(data =>{
+                if (data){
+                    history.push(ROUTES.DASHBOARD);
+                }
+            });
+        }
     },[]);
 
-    const handleLogin = async (event) => {
+    const handleLogin = async (event ) => {
         event.preventDefault();
         var status;
             fetch("/login", {
@@ -49,15 +51,10 @@ function Login({token, setToken}) {
                     console.log("return a token in Login");
                     localStorage.setItem("token", data);
                     setToken(data);
-                    console.log("jdvjdbv", token);
                     history.push(ROUTES.DASHBOARD);
                 }
             })
     };
-
-    useEffect(() => {
-        document.title = 'Login - Priori';
-    }, []);
 
     return (
         <div className="App">
@@ -98,5 +95,3 @@ function Login({token, setToken}) {
         </div>
     );
 }
-
-export default Login;
