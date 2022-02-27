@@ -148,3 +148,9 @@ button:hover {
 span{
   margin-left: 16px;
 }
+
+.chart-wrap{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
